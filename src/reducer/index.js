@@ -1,15 +1,7 @@
-import {Name} from '../action/type'
+import { combineReducers } from 'redux'
+import viewData from './viewData'
 
-const reducer = (state = 0 ,action)=>{
-    switch (action.type) {
-      case Name:
-        return state+1 
-        break;
+export default combineReducers({
+  viewData
     
-      default:
-        return state
-        break;
-    }
-
-}
-export default reducer
+  })
