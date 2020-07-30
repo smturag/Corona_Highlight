@@ -5,8 +5,7 @@ function ViewData(rcv){
 
     return{
         type: VIEWDATA,
-        data: rcv.countCountry
-   
+        data: rcv.countCountry   
     }
 }
 
@@ -18,18 +17,20 @@ function countCountryDataFetch(rcvData){
     }
 }
 
-// function fetchAllDataApiByDate(rcvDatabyDate){
-//     type:"ALL_DATA_FETCH_BY_DATE",
-//     data:
+function fetchAllDataApiByDate(rcvDatabyDate){
+    return{
+        type:ALL_DATA_FETCH_BY_DATE,
+        data: rcvDatabyDate.getCountryData[0].CountryData
 
-// }
+    }
+}
 
 
-function fetchDataAPIbyDate(){
+function fetchDataAPIbyDate(rcvDate){
     return dispatch =>{
-        return fetch(`http://localhost:300/api/countCountry/${a}`)
+        return fetch(`http://localhost:300/api/getDataDateM/${rcvDate}`)
         .then (res => res.json())
-        .then(data => dispatch(ViewData(data)))
+        .then(data => dispatch(fetchAllDataApiByDate(data)))
     }
 }
 
@@ -40,6 +41,7 @@ function dataFetch(a){
         .then(data => dispatch(ViewData(data)))
     }
 }
+
 function countCountryApi(rcvDate){
     return dispatch =>{
         return fetch(`http://localhost:300/api/countCountry/${rcvDate}`)
@@ -50,6 +52,6 @@ function countCountryApi(rcvDate){
 }
 
 
-export {dataFetch,countCountryApi}
+export {dataFetch,countCountryApi,fetchDataAPIbyDate}
 
 

@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React,{useState} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View,ScrollView } from 'react-native';
 import MultipleDateEntrys from './UI/Pages/MultipleDateEntrys.js'
+import AllDataByDate from './UI/Pages/ViewDateByDate'
 import MaxCountrysEntry from './UI/Pages/MaxCountryData'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -20,8 +21,12 @@ function HomeScreen() {
 function def() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <ScrollView>
+      <AllDataByDate/>
+
+    </ScrollView>
     
-       <Text>cde</Text>
+    
     </View>
   );
 }
@@ -33,43 +38,27 @@ export default function App() {
   
   
   return (
-    
+
         <NavigationContainer>
-          <Tab.Navigator>
+          <Tab.Navigator initialRouteName="ABC">
+          
           <Tab.Screen name='MultipleDateEntrys'>
               {props=><MultipleDateEntrys{...props}/>} 
             </Tab.Screen>
             <Tab.Screen name='MaxCountrysEntry'>
               {props=><MaxCountrysEntry{...props}/>} 
             </Tab.Screen>
+            <Tab.Screen name='AllDataByDate'>
+              {props=><AllDataByDate{...props}/>} 
+            </Tab.Screen>
+            <Tab.Screen name='ABC' component={def}/>
+            
           </Tab.Navigator>
       
 
 
-    </NavigationContainer>
-      
-    
-
-    
-    
-
- 
-    
-     
+    </NavigationContainer> 
     
   );
 }
 
-const styles = StyleSheet.create({
-  title:{
-    flex:1/3,
-    //backgroundColor:'#00bfff',
-    fontWeight: 'bold',
-    fontSize:'120'
-
-  },
-  container: {
-    flex: 1,
-    margin:2
-  },
-});

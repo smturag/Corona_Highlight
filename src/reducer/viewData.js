@@ -1,8 +1,10 @@
-import {VIEWDATA,COUNT_COUNTRY_DATA_FETCH} from "../action/type";
+import {VIEWDATA,COUNT_COUNTRY_DATA_FETCH,ALL_DATA_FETCH_BY_DATE} from "../action/type";
 
 let initialState={
   arrayData:[],
-  countCountry:[]
+  countCountry:[],
+  dataByDate:[],
+  abc:'0'
   
 }
 
@@ -12,7 +14,8 @@ const viewData = (state = initialState ,action)=>{
       return Object.assign([],state,{arrayData:action.data})
     case COUNT_COUNTRY_DATA_FETCH:
       return Object.assign([],state,{countCountry:action.data})
-      
+    case ALL_DATA_FETCH_BY_DATE:
+      return Object.assign([],state,{dataByDate:action.data})      
   
     default:
       return state
