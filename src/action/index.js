@@ -1,4 +1,4 @@
-import  { VIEWDATA,COUNT_COUNTRY_DATA_FETCH,ALL_DATA_FETCH_BY_DATE} from './type'
+import  { VIEWDATA,COUNT_COUNTRY_DATA_FETCH,ALL_DATA_FETCH_BY_DATE,DELETE_MAX_ENTRY} from './type'
 import fetch from 'cross-fetch'
 
 function ViewData(rcv){
@@ -22,6 +22,11 @@ function fetchAllDataApiByDate(rcvDatabyDate){
         type:ALL_DATA_FETCH_BY_DATE,
         data: rcvDatabyDate.getCountryData[0].CountryData
 
+    }
+}
+function deleteMultipleEntryOfData(){
+    return{
+        type:DELETE_MAX_ENTRY        
     }
 }
 
@@ -50,8 +55,17 @@ function countCountryApi(rcvDate){
     }
 
 }
+function deleteMaxEntry(id){
+    
+    return dispatch=>{
+        return fetch(`http://localhost:300/api/deleteData/${id}`,{
+            method: 'DELETE'
+        })       
+
+    }
+}
 
 
-export {dataFetch,countCountryApi,fetchDataAPIbyDate}
+export {dataFetch,countCountryApi,fetchDataAPIbyDate,deleteMaxEntry}
 
 

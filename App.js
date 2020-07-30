@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React,{useState} from 'react';
 import { StyleSheet, Text, View,ScrollView } from 'react-native';
-import MultipleDateEntrys from './UI/Pages/MultipleDateEntrys.js'
 import AllDataByDate from './UI/Pages/ViewDateByDate'
 import MaxCountrysEntry from './UI/Pages/MaxCountryData'
 import { NavigationContainer } from '@react-navigation/native';
@@ -20,7 +19,7 @@ function HomeScreen() {
 }
 function def() {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: 'center', }}>
     <ScrollView>
       <AllDataByDate/>
 
@@ -40,11 +39,9 @@ export default function App() {
   return (
 
         <NavigationContainer>
-          <Tab.Navigator initialRouteName="ABC">
+          <Tab.Navigator initialRouteName="MaxCountrysEntry">
           
-          <Tab.Screen name='MultipleDateEntrys'>
-              {props=><MultipleDateEntrys{...props}/>} 
-            </Tab.Screen>
+
             <Tab.Screen name='MaxCountrysEntry'>
               {props=><MaxCountrysEntry{...props}/>} 
             </Tab.Screen>

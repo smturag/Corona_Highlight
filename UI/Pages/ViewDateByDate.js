@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 import {View,Text,TextInput, TouchableOpacity,ScrollView } from 'react-native'
-
+import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-material-cards'
 import { connect } from 'react-redux'
 import {fetchDataAPIbyDate} from '../../src/action/index'
 import ADFL from '../../UI/Components/AllDataFlatList'
@@ -36,32 +36,36 @@ class AllDataByDate extends Component{
 
 
         return(
-            <View>
+            <View style={{alignContent:'center'}}>
                <TextInput
                    placeholder="Enter the date"
                    onChangeText={(inputDate)=> this.setState({inputDate})}
                />
-               
-               <View style={{flexDirection: 'row', flexWrap: 'wrap' }}>
+
+                    <TouchableOpacity onPress={this.submit}>
+                            <Text>Submit</Text>
+
+                    </TouchableOpacity>
+                
+               <Card>
+               <View style={{flexDirection: 'row'}}>
                 <ADFL dataSet={this.state.data.CountryName}/>
                 <ADFL dataSet={this.state.data.TotalCases}/>
-                <ADFL dataSet={this.state.data.NewCase}/>
+                <ADFL dataSet={this.state.data.NewCases}/>
                 <ADFL dataSet={this.state.data.TotalDeaths}/>
                 <ADFL dataSet={this.state.data.NewDeaths}/>
                 <ADFL dataSet={this.state.data.TotalRecovered}/>
                 <ADFL dataSet={this.state.data.ActiveCases}/>
                 <ADFL dataSet={this.state.data.Serious}/>
-                <ADFL dataSet={this.state.data.Population}/>
-                
+                <ADFL dataSet={this.state.data.Population}/>       
 
                </View>
+
+               </Card>
+              
                
              
-               <TouchableOpacity onPress={this.submit}>
-                <Text>Submit</Text>
-
-               </TouchableOpacity>
-                
+               
             </View>
         )
     }

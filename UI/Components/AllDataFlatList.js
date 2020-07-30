@@ -1,26 +1,26 @@
 import React,{Component} from 'react'
 import {View,FlatList,Text,ScrollView,StyleSheet} from 'react-native'
+import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-material-cards'
 
  const AllDataView=(props)=>{
     const myData = props.dataSet
 
     
     return(
-        <View style={{flex:1}}>
+        <View>       
             
             <FlatList                 
                 data={myData}            
                 renderItem={({item})=>{
                     return(
-                        <View style={{margin:2}}>
-                            <Text style={styles.text}>{item}</Text>
-                          
+                        <View>                            
+                            <Text style={{margin:4}}>{item}</Text>                           
                          </View>                         
                     )
                     }}
-              m   keyExtractor={(item,index)=> index.toString()}
-                
+                 keyExtractor={(item,index)=> index.toString()}                
             />
+            
         </View>
     )
 }

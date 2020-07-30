@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {countCountryApi} from '../../src/action/index'
 import { Dimensions } from 'react-native';
 import Vmde from '../Components/ViewMultipaleDatesEntry'
+import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-material-cards'
 
 
 class MaxCountryData extends Component{
@@ -24,24 +25,26 @@ class MaxCountryData extends Component{
         componentDidMount(){
            
         }
-        onSubmit=()=>{
+         onSubmit=()=>{
             this.state.inputDate!=''? this.props.hitSubmit(this.state.inputDate):console.log('error')
             
         }        
 
         render(){
             return(
-                <View>
+                <View style={{alignContent:'center',alignItems: 'center'}}>
                     <TextInput
-                        placeholder= 'Enter the Date'
+                        placeholder= 'Enter the Dates'
                         onChangeText={(inputDate)=> this.setState({inputDate})}
-
+                      
                     />
-                    
                     <Vmde data = {this.state.data}/>
+                    <Vmde   fDate={this.state.inputDate}/>
+                    
                     <TouchableOpacity onPress={this.onSubmit}>
                         <Text>Done</Text>
                     </TouchableOpacity>
+                    
                 </View>
             )
         }
