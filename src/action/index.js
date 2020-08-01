@@ -1,4 +1,4 @@
-import  { VIEWDATA,COUNT_COUNTRY_DATA_FETCH,ALL_DATA_FETCH_BY_DATE,DELETE_MAX_ENTRY} from './type'
+import  { VIEWDATA,COUNT_COUNTRY_DATA_FETCH,ALL_DATA_FETCH_BY_DATE,DELETE_MAX_ENTRY,GETDATA_DATEANDCOUNTRYMATCHING} from './type'
 import fetch from 'cross-fetch'
 
 function ViewData(rcv){
@@ -24,9 +24,10 @@ function fetchAllDataApiByDate(rcvDatabyDate){
 
     }
 }
-function deleteMultipleEntryOfData(){
+function getDataByDateAndCountryMatching(rcvData){
     return{
-        type:DELETE_MAX_ENTRY        
+        type:GETDATA_DATEANDCOUNTRYMATCHING,
+        data: rcvData.getCountryData
     }
 }
 
@@ -64,8 +65,15 @@ function deleteMaxEntry(id){
 
     }
 }
+function getDatabyDACMAPI(d,c){
+    return dispatch=>{
+        return fetch('http://localhost:300/api/getDataDACM/${d}/${c}')
+        .then(res=>res.json())
+        .then(data=>dispatch(getDataByDateAndCountryMatching(data)))
+    }
+}
 
 
-export {dataFetch,countCountryApi,fetchDataAPIbyDate,deleteMaxEntry}
+export {dataFetch,countCountryApi,fetchDataAPIbyDate,deleteMaxEntry,getDatabyDACMAPI}
 
 

@@ -38,7 +38,11 @@ class MaxCountryData extends Component{
                         onChangeText={(inputDate)=> this.setState({inputDate})}
                       
                     />
-                    <Vmde data = {this.state.data}/>
+                    <View style={{flexDirection: 'row'}}>
+                        <Vmde data = {this.state.data}/>
+
+                    </View>
+                    
                     <Vmde   fDate={this.state.inputDate}/>
                     
                     <TouchableOpacity onPress={this.onSubmit}>

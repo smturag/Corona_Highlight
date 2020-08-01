@@ -6,6 +6,7 @@ const monitorReducerEnhancer = createStore => (
   enhancer
 ) => {
   const monitoredReducer = (state, action) => {
+    
     const start = performance.now()
     const newState = reducer(state, action)
     const end = performance.now()

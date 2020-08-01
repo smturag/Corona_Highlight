@@ -1,12 +1,15 @@
 import React,{Component} from 'react'
-import {View,Text,FlatList} from 'react-native'
+import {View,Text,FlatList,CheckBoxProps} from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-material-cards'
-import { connect } from 'react-redux'
+import { CheckBox } from 'react-native-elements'
 import {deleteMaxEntry} from '../../src/action/index'
-import {countCountryApi} from '../../src/action/index'
+
+
 
 const ViewMultipaleDatesEntry=(props)=>{
+    
+
     let myData = props.data
     let fDate = props.fDate
      const deleteItem=(id)=>{
@@ -16,6 +19,7 @@ const ViewMultipaleDatesEntry=(props)=>{
     return(
         <View>         
             <FlatList
+                
                 data={myData}
                 renderItem={({item})=>{
                     return(
@@ -26,7 +30,9 @@ const ViewMultipaleDatesEntry=(props)=>{
                             <TouchableOpacity onPress={deleteItem(item._id)}>
                                 <Text>Delete</Text>
                             </TouchableOpacity> 
+                            
                         </Card>
+                        
                     </View>
                     )
                 }}

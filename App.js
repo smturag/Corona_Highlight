@@ -6,6 +6,7 @@ import MaxCountrysEntry from './UI/Pages/MaxCountryData'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import GetData_DateAndCountryMatching from './ui/Pages/GetData_DateAndCountryMatching'
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -39,8 +40,7 @@ export default function App() {
   return (
 
         <NavigationContainer>
-          <Tab.Navigator initialRouteName="MaxCountrysEntry">
-          
+          <Tab.Navigator initialRouteName="GetData_DateAndCountryMatching">          
 
             <Tab.Screen name='MaxCountrysEntry'>
               {props=><MaxCountrysEntry{...props}/>} 
@@ -49,6 +49,9 @@ export default function App() {
               {props=><AllDataByDate{...props}/>} 
             </Tab.Screen>
             <Tab.Screen name='ABC' component={def}/>
+            <Tab.Screen name='GetData_DateAndCountryMatching'>
+              {props=><GetData_DateAndCountryMatching{...props}/>} 
+            </Tab.Screen>
             
           </Tab.Navigator>
       
