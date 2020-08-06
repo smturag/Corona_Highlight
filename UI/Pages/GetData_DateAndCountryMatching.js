@@ -14,6 +14,7 @@ import {
   CardImage,
 } from "react-native-material-cards";
 import { FlatList } from "react-native-gesture-handler";
+import DataInsert from '../Pages/DataPost'
 
 class GetData_DACM extends Component {
   constructor(props) {
@@ -63,6 +64,7 @@ class GetData_DACM extends Component {
         <Text>{this.state.getData.NewDeaths}</Text>
         <Text>{this.state.getData.TotalRecovered}</Text>
         <Text>{this.state.getData.Serious}</Text>
+        <DataInsert/>
       </View>
     );
   }
