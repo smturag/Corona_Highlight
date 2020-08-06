@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React,{useState} from 'react';
 import { StyleSheet, Text, View,ScrollView } from 'react-native';
-import AllDataByDate from './UI/Pages/ViewDateByDate'
+import AllDataByDate from './UI/Pages/ViewDataByDate'
 import MaxCountrysEntry from './UI/Pages/MaxCountryData'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -45,10 +45,7 @@ export default function App() {
             <Tab.Screen name='MaxCountrysEntry'>
               {props=><MaxCountrysEntry{...props}/>} 
             </Tab.Screen>
-            <Tab.Screen name='AllDataByDate'>
-              {props=><AllDataByDate{...props}/>} 
-            </Tab.Screen>
-            <Tab.Screen name='ABC' component={def}/>
+            <Tab.Screen name='AllDataByDate' component={def}/>
             <Tab.Screen name='GetData_DateAndCountryMatching'>
               {props=><GetData_DateAndCountryMatching{...props}/>} 
             </Tab.Screen>

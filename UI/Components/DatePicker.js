@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import {View, Button, Platform} from 'react-native';
+import React, { useState } from 'react';
+import { View, Button, Platform } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
- const Abc = () => {
+const Abc = () => {
   const [date, setDate] = useState(new Date(1598051730000));
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);

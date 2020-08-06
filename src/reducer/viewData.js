@@ -6,7 +6,8 @@ let initialState={
   countCountry:[],
   dataByDate:[],
   abc:'0',
-  getDatabyDCM:[]
+  getDatabyDCM:0,
+  forSingleCountry:[]
   
 }
 
