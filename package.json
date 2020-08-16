@@ -11,7 +11,7 @@
     "@material/checkbox": "^7.0.0",
     "@material/form-field": "^7.0.0",
     "@react-native-community/checkbox": "^0.4.2",
-    "@react-native-community/datetimepicker": "^2.6.0",
+    "@react-native-community/datetimepicker": "^2.4.0",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-native-community/picker": "^1.6.0",
     "@react-navigation/bottom-tabs": "^5.7.2",

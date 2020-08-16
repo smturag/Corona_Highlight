@@ -20,11 +20,6 @@ function ViewData(rcv) {
         };
     }
 
-    // return {
-    //     type: VIEWDATA,
-    //     data: rcv.getCountryData[0].CountryData
-
-    // }
 }
 
 function countCountryDataFetch(rcvData) {
@@ -48,10 +43,19 @@ function fetchAllDataApiByDate(rcvDatabyDate) {
     }
 }
 function getDataByDateAndCountryMatching(rcvData) {
-    return {
-        type: GETDATA_DATEANDCOUNTRYMATCHING,
-        data: rcvData.getCountryData[0],
-    };
+    if (rcvData.getCountryData[0] === undefined) {
+        return {
+            type: GETDATA_DATEANDCOUNTRYMATCHING,
+            data: 'Error'
+        }
+
+    } else {
+        return {
+            type: GETDATA_DATEANDCOUNTRYMATCHING,
+            data: rcvData.getCountryData[0],
+        };
+    }
+
 }
 
 function fetchDataAPIbyDate(rcvDate) {

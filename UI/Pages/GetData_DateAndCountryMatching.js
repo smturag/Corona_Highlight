@@ -3,8 +3,7 @@ import { View, TextInput, TouchableOpacity, Text } from "react-native";
 //import { TextInput } from 'react-native-gesture-handler'
 import { connect } from "react-redux";
 import { getDatabyDACMAPI, ViewData } from "../../src/action/index";
-import { Picker } from "@react-native-community/picker";
-import DDL from "../Components/DropDown";
+import styles from "../style/getDataDate&CounntryM.js";
 import {
   Card,
   CardTitle,
@@ -13,8 +12,8 @@ import {
   CardButton,
   CardImage,
 } from "react-native-material-cards";
-import { FlatList } from "react-native-gesture-handler";
-import DataInsert from '../Pages/DataPost'
+import { FlatList, TouchableHighlight } from "react-native-gesture-handler";
+import DataInsert from "../Pages/DataPost";
 
 class GetData_DACM extends Component {
   constructor(props) {
@@ -25,51 +24,79 @@ class GetData_DACM extends Component {
       inputDate: "",
       inputCountry: "",
       language: "Nothing",
+      vsData: false,
     };
   }
   static getDerivedStateFromProps(props, state) {
     return {
-      getData: props.getCountry
+      getData: props.getCountry,
     };
   }
   onSubmit = () => {
     if (this.state.inputDate != "" && this.state.inputCountry != "") {
       let d = this.state.inputDate;
       let c = this.state.inputCountry;
-
       this.props.submit(d, c);
+      this.state.vsData = true;
     }
   };
   render() {
+    const VData = () => {
+      if (this.state.vsData === true) {
+        if (this.state.getData === "Error") {
+          return (
+            <View>
+              <Text>No Data Avilable</Text>
+            </View>
+          )
+        } else {
+          return (
+            <View>
+              <Card>
+                <Text>Active Cases: {this.state.getData.ActiveCases}</Text>
+                <Text>Population: {this.state.getData.Population}</Text>
+                <Text>TotalDeaths: {this.state.getData.TotalDeaths}</Text>
+                <Text>New Deaths: {this.state.getData.NewDeaths}</Text>
+                <Text>TotalRecovered:{this.state.getData.TotalRecovered}</Text>
+                <Text> Serious: {this.state.getData.Serious}</Text>
+              </Card>
+            </View>
+          );
+
+        }
+
+      } else {
+        return (
+          <View>
+            <Text></Text>
+          </View>
+        );
+      }
+    };
     return (
-      <View style={{ alignContent: "center", alignItems: "center" }}>
-        <TextInput
-          placeholder="Input Date"
-          onChangeText={(inputDate) => this.setState({ inputDate })}
-        />
+      <View style={styles.mainPage}>
+        <View style={styles.header}>
+          <TextInput
+            style={styles.input}
+            placeholder="Input Date"
+            onChangeText={(inputDate) => this.setState({ inputDate })}
+          />
 
-        <TextInput
-          placeholder="Input Country"
-          onChangeText={(inputCountry) => this.setState({ inputCountry })}
-        />
-
-        <TouchableOpacity onPress={this.onSubmit}>
-          <Text>Submit</Text>
-        </TouchableOpacity>
-
-
-        <Text>{this.state.getData.ActiveCases}</Text>
-        <Text>{this.state.getData.Population}</Text>
-        <Text>{this.state.getData.TotalDeaths}</Text>
-        <Text>{this.state.getData.NewDeaths}</Text>
-        <Text>{this.state.getData.TotalRecovered}</Text>
-        <Text>{this.state.getData.Serious}</Text>
-        <DataInsert/>
+          <TextInput
+            style={styles.input}
+            placeholder="Input Country"
+            onChangeText={(inputCountry) => this.setState({ inputCountry })}
+          />
+          <TouchableHighlight style={styles.btn} onPress={this.onSubmit}>
+            <Text>Submit</Text>
+          </TouchableHighlight>
+          <DataInsert />
+        </View>
+        <VData />
       </View>
     );
   }
 }
-
 
 const mapStateToProps = (state, ownProps) => ({
   getCountry: state.getDatabyDCM,

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { DataInsertApi } from '../../src/action/index'
 import { connect } from 'react-redux'
+import { TouchableHighlight } from "react-native-gesture-handler";
+import styles from "../style/getDataDate&CounntryM";
 
 
 class DataInsert extends Component {
@@ -18,9 +20,9 @@ class DataInsert extends Component {
     render() {
         return (
             <View>
-                <TouchableOpacity onPress={this.onSubmit}>
+                <TouchableHighlight style={styles.btnDataInsert} onPress={this.onSubmit}>
                     <Text>DataInsert</Text>
-                </TouchableOpacity>
+                </TouchableHighlight>
             </View>
         );
     }

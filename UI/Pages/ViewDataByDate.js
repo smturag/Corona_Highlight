@@ -4,7 +4,9 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  Pressable,
   ScrollView,
+  TouchableHighlight,
 } from "react-native";
 import {
   Card,
@@ -17,6 +19,7 @@ import {
 import { connect } from "react-redux";
 import { fetchDataAPIbyDate } from "../../src/action/index";
 import ADFL from "../Components/AllDataFlatList";
+import styles from "../style/styleFile";
 import {
   Table,
   TableWrapper,
@@ -81,40 +84,74 @@ class AllDataByDate extends Component {
       if (this.state.data === "Error") {
         return (
           <View>
-            <Text>No Data avilable</Text>
+            <Text style={styles.noText}>No Data avilable</Text>
           </View>
         );
       } else {
         return (
-          <View style={{ flexDirection: "row" }}>
-            <ADFL dataSet={this.state.data.CountryName} />
-            <ADFL dataSet={this.state.data.TotalCases} />
-            <ADFL dataSet={this.state.data.NewCases} />
-            <ADFL dataSet={this.state.data.TotalDeaths} />
-            <ADFL dataSet={this.state.data.NewDeaths} />
-            <ADFL dataSet={this.state.data.TotalRecovered} />
-            <ADFL dataSet={this.state.data.ActiveCases} />
-            <ADFL dataSet={this.state.data.Serious} />
-            <ADFL dataSet={this.state.data.Population} />
+          <View>         
+            <View style={styles.contendDataSet}>
+              <View style={{margin:4}}>
+                <Text>Country Name</Text>
+                <ADFL dataSet={this.state.data.CountryName} />
+              </View>
+              <View style={{margin:4}}>
+                <Text >Total Cases </Text>
+                <ADFL dataSet={this.state.data.TotalCases} />
+              </View>
+              <View style={{margin:4}}>
+                <Text >New Cases</Text>
+                <ADFL dataSet={this.state.data.NewCases} />
+              </View>
+              <View style={{margin:4}}>
+                <Text >Total Deaths</Text>
+                <ADFL dataSet={this.state.data.TotalDeaths} />
+              </View>
+              <View style={{margin:4}}>
+                <Text>New Deaths</Text>
+                <ADFL dataSet={this.state.data.NewDeaths} />
+              </View>
+              <View style={{margin:4}}>
+                <Text>Total Recovered</Text>
+                <ADFL dataSet={this.state.data.TotalRecovered} />
+              </View>
+              <View style={{margin:4}}>
+                <Text>Active Cases</Text>
+                <ADFL dataSet={this.state.data.ActiveCases} />
+              </View>
+              <View style={{margin:4}}>
+                <Text>Serious</Text>
+                <ADFL dataSet={this.state.data.Serious} />
+              </View>
+              <View style={{margin:4}}>
+                <Text>Population</Text>
+                <ADFL dataSet={this.state.data.Population} />
+              </View>
+            </View>
           </View>
         );
       }
     };
 
     return (
-      <View style={{ alignContent: "center" }}>
-        <TextInput
-          placeholder="Enter the date"
-          onChangeText={(inputDate) => this.setState({ inputDate })}
-        />
-
-        <TouchableOpacity onPress={this.submit}>
-          <Text>Submit</Text>
-        </TouchableOpacity>
-
+      <View style={styles.allDataView}>
+        <View style={styles.HeadBar}>
+          <TextInput
+            style={styles.inputDate}
+            placeholder="Enter the date"
+            onChangeText={(inputDate) => this.setState({ inputDate })}
+            multiline={false}
+          />
+          <TouchableHighlight onPress={this.submit} style={styles.button}>
+            <Text>Submit</Text>
+          </TouchableHighlight>
+        </View>
+      
         <Card>
           <DataCheck />
         </Card>
+       
+        
       </View>
     );
   }
@@ -129,5 +166,4 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(AllDataByDate);
