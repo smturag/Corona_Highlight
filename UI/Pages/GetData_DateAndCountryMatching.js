@@ -48,23 +48,22 @@ class GetData_DACM extends Component {
             <View>
               <Text>No Data Avilable</Text>
             </View>
-          )
+          );
         } else {
           return (
             <View>
               <Card>
+                <Text>New Cases: {this.state.getData.NewCases} </Text>
                 <Text>Active Cases: {this.state.getData.ActiveCases}</Text>
                 <Text>Population: {this.state.getData.Population}</Text>
                 <Text>TotalDeaths: {this.state.getData.TotalDeaths}</Text>
                 <Text>New Deaths: {this.state.getData.NewDeaths}</Text>
                 <Text>TotalRecovered:{this.state.getData.TotalRecovered}</Text>
-                <Text> Serious: {this.state.getData.Serious}</Text>
+                <Text>Serious: {this.state.getData.Serious}</Text>
               </Card>
             </View>
           );
-
         }
-
       } else {
         return (
           <View>

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component,useEffect,useRef } from "react";
 import {
   View,
   StyleSheet,
@@ -18,6 +18,12 @@ import {
   CardButton,
   CardImage,
 } from "react-native-material-cards";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+import st from "../style/maxCountry";
+import { TouchableHighlight } from "react-native-gesture-handler";
 
 class MaxCountryData extends Component {
   constructor(props) {
@@ -32,42 +38,39 @@ class MaxCountryData extends Component {
       data: props.countCountry,
     };
   }
-  componentDidMount() {}
+  componentDidMount() {
+   
+   }
   onSubmit = () => {
     this.state.inputDate != ""
       ? this.props.hitSubmit(this.state.inputDate)
       : console.log("error");
   };
 
+
+
   render() {
+   
     return (
-      <View style={{ alignContent: "center", alignItems: "center" }}>
-        <TextInput
-          placeholder="Enter the Dates"
-          onChangeText={(inputDate) => this.setState({ inputDate })}
-        />
-        <View style={{ flexDirection: "row" }}>
-          <Vmde data={this.state.data} />
+      <View style={st.mainPage}>
+        <View style={st.headBox}>
+          <TextInput
+            style={st.input}
+            placeholder="Enter the Dates"
+            onChangeText={(inputDate) => this.setState({ inputDate })}
+          />
+          <TouchableHighlight style={st.btn} onPress={this.onSubmit}>
+            <Text>Done</Text>
+          </TouchableHighlight>
         </View>
-
-        <Vmde fDate={this.state.inputDate} />
-
-        <TouchableOpacity onPress={this.onSubmit}>
-          <Text>Done</Text>
-        </TouchableOpacity>
+        <View style={st.vsData}>
+          <Vmde data={this.state.data} />
+          <Vmde fDate={this.state.inputDate}/>
+        </View>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  header: {
-    color: "#ff3399",
-    fontSize: 30,
-    flex: 1,
-    marginTop: 0,
-  },
-});
 
 const mapStateToProps = (state, ownProps) => ({
   countCountry: state.countCountry,

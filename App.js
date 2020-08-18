@@ -29,7 +29,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Tab.Navigator initialRouteName="GetData_DateAndCountryMatching">
+      <Tab.Navigator initialRouteName="MaxCountrysEntry">
         <Tab.Screen name="MaxCountrysEntry">
           {(props) => <MaxCountrysEntry {...props} />}
         </Tab.Screen>
@@ -37,9 +37,6 @@ export default function App() {
         <Tab.Screen name="GetData_DateAndCountryMatching">
           {(props) => <GetData_DateAndCountryMatching {...props} />}
         </Tab.Screen>
-        {/* <Tab.Screen name="aaa">
-          {(props) => <AllDataByDate {...props} />}
-        </Tab.Screen> */}
         <Tab.Screen name="Home" component={abcd} />
       </Tab.Navigator>
     </NavigationContainer>
